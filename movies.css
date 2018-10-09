@@ -37,7 +37,7 @@
     height: 200px;
 }
 
-.grid .title{
+.grid .title {
     position:absolute;
     left:6px;
     bottom:6px;
@@ -75,7 +75,6 @@
 }
 
 .list .year{
-    top:100px;
     color:gray;
     font-size:15px;  
 }
