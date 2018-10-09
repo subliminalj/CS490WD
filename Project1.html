@@ -10,6 +10,7 @@ and open the template in the editor.
         <title>Movies</title>
         <meta charset="UTF-8">
         <link rel="stylesheet" type="text/css" href="style/movies.css">
+        <link rel="stylesheet" type="text/css" href="style/search.css">
         <script id="movie-template" type="text/html">
         <div class='movie'>
             <img src='{{photo}}'>
@@ -33,6 +34,10 @@ and open the template in the editor.
             <option>rating</option>
             <option>year</option>
         </select>
+         <input class="text" id="field" type="text">
+        <button id="search_button"> Search </button>
+        <div id="suggestions_box" class="suggestions"></div>
+        
         <img id="list_icon" title="list" src="images/list.jpg">
         <img id="grid_icon" title="grid" src="images/grid_pressed.jpg">
     </div>

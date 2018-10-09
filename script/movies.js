@@ -1,6 +1,7 @@
 $(document).ready(function () {
     var controller = new Controller(movies["movies"]);
-    
+    $("#search_button").on('click',search_movies(movies["movies"]));
+    $("#field").on('keyup',search_movies(movies["movies"]));
 });
 
 
@@ -61,6 +62,7 @@ Controller.prototype.sort_movies=function(){
 };
 
 
+
 Controller.prototype.make_grid = function () {
     $(this.movies_div).attr("class", "grid");
     $(this.grid_icon).attr("src", "images/grid_pressed.jpg");
@@ -73,8 +75,33 @@ Controller.prototype.make_list = function () {
     $(this.list_icon).attr("src", "images/list_pressed.jpg");
 };
 
+function search_movies(data){
+    var moviearray = data;
+    var html = "";
+    var value = $("#field").val(); //get the value of the text field
+    var show=false; //don't show suggestions
 
+    for(var i=0;i<moviearray.length;++i){
+        var start = moviearray[i].toLowerCase().search(value.toLowerCase().trim());
+        if (start != -1) { //if there is a search match
+            html += "<div class='sub_suggestions' data-item='" + moviearray[i] + "' >";
+            html += moviearray[i].substring(0,start)+"<b>"+moviearray[i].substring(start,start+value.length)+"</b>"+moviearray[i].substring(start+value.length,moviearray[i].length);
+            html += "</div>";
+            show=true; //show suggestions
+        }
+    }
+    if(show){
+        $("#suggestions_box").html(html);
+        //get the children of suggestions_box with .sub_suggestions class
+        $("#suggestions_box").children(".sub_suggestions").on('click',function(){
+            var item=$(this).attr('data-item'); //get the data
+            $("#field").val(item); //show it in the field
+            $("#suggestions_box").hide(); //hide the suggestion box
+        });
+        
+        $("#suggestions_box").show();
+    }
+    else
+       $("#suggestions_box").hide();
 
-
-
-
+};
