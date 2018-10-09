@@ -33,7 +33,7 @@ function Controller(data) {
     $(this.list_icon).on("click", make_list_function);
     $(this.combo_box).on('change',sort_movies);
     
-    this.load_moviess();
+    this.load_movies();
 }
 
 Controller.prototype.load_movies = function() {
