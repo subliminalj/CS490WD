@@ -82,6 +82,8 @@ function search_movies(data){
     var show=false; //don't show suggestions
 
     for(var i=0;i<moviearray.length;++i){
+        
+        //array contains maps, need new search logic here
         var start = moviearray[i].toLowerCase().search(value.toLowerCase().trim());
         if (start != -1) { //if there is a search match
             html += "<div class='sub_suggestions' data-item='" + moviearray[i] + "' >";
